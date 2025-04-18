@@ -25,16 +25,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(ItemsFactory $itemsFactory, Cart $cart): void
     {
-        View::composer(['components.layout', 'admin*'], function ($view) use ($itemsFactory) {
+        View::composer(['components.layout', 'admin.*'], function ($view) use ($itemsFactory) {
             Paginator::useBootstrapFour();
             $items = $itemsFactory->create(config('admin_menu'));
             $view->with('navigation', $items);
         });
 
-        View::composer('components.shop.layout', function ($view) use ($itemsFactory, $cart) {
-            Paginator::useBootstrapFour();
-            $items = $itemsFactory->create(config('admin_menu'));
-            $view->with('navigation', $items);
+        View::composer('components.shop.layout', function ($view) use ($cart) {
             $view->with('cart', $cart);
         });
     }
