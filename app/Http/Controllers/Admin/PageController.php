@@ -12,7 +12,7 @@ class PageController extends Controller
 {
     public function index(): View
     {
-        $pages = Page::latest()->paginate(20);
+        $pages = Page::latest()->paginate();
         return view('admin.pages.index', compact('pages'));
     }
 
