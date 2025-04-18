@@ -10,6 +10,6 @@ class ProductController extends Controller
 {
     public function show(Product $product): View
     {
-        return view('shop.product.show', compact('product'));
+        return view('shop.products.show', compact('product'));
     }
 }
