@@ -13,7 +13,7 @@
 
         <div>
             <h1 class="text-2xl font-bold mb-2">{{ $product->name }}</h1>
-            <p class="text-gray-600 mb-2">Kategória: {{ $product->category->name }}</p>
+            <p class="text-gray-600 mb-2">Category: {{ $product->category->name }}</p>
             <p class="mb-4">{{ $product->description }}</p>
             <p class="text-xl font-semibold mb-4">{{ number_format($product->price, 2) }} € / {{ $product->unit }}</p>
             <x-shop.add-to-cart :product="$product" class="py-2" />
