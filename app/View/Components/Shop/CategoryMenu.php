@@ -13,7 +13,7 @@ class CategoryMenu extends Component
 
     public function __construct()
     {
-        $this->categories = Category::orderBy('name')->get();
+        $this->categories = Category::active()->orderBy('name')->get();
     }
 
     public function render(): View|Closure|string
