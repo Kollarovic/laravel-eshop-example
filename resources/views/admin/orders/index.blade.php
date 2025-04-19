@@ -3,6 +3,7 @@
         <table class="table table-striped projects">
             <thead>
             <tr>
+                <th>Date</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>City</th>
@@ -13,6 +14,7 @@
             <tbody>
             @foreach($orders as $order)
                 <tr>
+                    <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                     <td>{{ $order->name }}</td>
                     <td>{{ $order->email }}</td>
                     <td>{{ $order->city }}</td>
