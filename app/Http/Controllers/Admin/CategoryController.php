@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -13,6 +13,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         $categories = Category::latest()->paginate();
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -25,6 +26,7 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         Category::create($data);
+
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
@@ -37,12 +39,14 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         $category->update($data);
+
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
+
         return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
     }
 }

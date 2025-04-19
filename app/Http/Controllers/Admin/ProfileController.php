@@ -13,6 +13,7 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = $request->user();
+
         return view('admin.profile.edit', compact('user'));
     }
 
@@ -24,6 +25,7 @@ class ProfileController extends Controller
             unset($data['password']);
         }
         $user->update($data);
+
         return redirect()->route('admin.profile.edit')->with('success', 'Profile updated successfully.');
     }
 }

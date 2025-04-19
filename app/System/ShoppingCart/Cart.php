@@ -6,9 +6,7 @@ use App\Models\Product;
 
 class Cart
 {
-    public function __construct(private CartStorage $storage)
-    {
-    }
+    public function __construct(private CartStorage $storage) {}
 
     /* @return array<Item> */
     public function getItems(): array
@@ -53,6 +51,7 @@ class Cart
         foreach ($this->getItems() as $item) {
             $total += $item->getTotal();
         }
+
         return $total;
     }
 
@@ -62,12 +61,13 @@ class Cart
         foreach ($this->getItems() as $item) {
             $quantity += $item->getQuantity();
         }
+
         return $quantity;
     }
 
     public function isEmpty(): bool
     {
-        return !$this->getQuantity();
+        return ! $this->getQuantity();
     }
 
     public function clear(): void

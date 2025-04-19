@@ -19,12 +19,14 @@ class CartController extends Controller
     public function add(Product $product, Cart $cart): RedirectResponse
     {
         $cart->addItem($product, 1);
+
         return redirect()->route('shop.cart.index')->with('success', 'Product added to cart successfully!');
     }
 
     public function remove(Product $product, Cart $cart): RedirectResponse
     {
         $cart->removeItem($product);
+
         return redirect()->route('shop.cart.index')->with('success', 'Product removed from cart successfully!');
     }
 
@@ -32,12 +34,14 @@ class CartController extends Controller
     {
         $validated = $request->validated();
         $cart->updateItem($product, $validated['quantity']);
+
         return redirect()->route('shop.cart.index')->with('success', 'Cart updated successfully!');
     }
 
     public function clear(Cart $cart): RedirectResponse
     {
         $cart->clear();
+
         return redirect()->route('shop.cart.index')->with('success', 'Cart cleared.');
     }
 }

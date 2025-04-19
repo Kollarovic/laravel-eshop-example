@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\System\ShoppingCart;
 
 use Illuminate\Session\Store;
@@ -9,9 +8,7 @@ class SessionCartStorage implements CartStorage
 {
     private const KEY = 'cart';
 
-    public function __construct(protected Store $session)
-    {
-    }
+    public function __construct(protected Store $session) {}
 
     public function getCartItems(): array
     {

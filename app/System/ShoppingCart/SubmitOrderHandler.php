@@ -19,6 +19,7 @@ class SubmitOrderHandler
             ]);
         }
         $cart->clear();
+
         return $order;
     }
 }

@@ -10,13 +10,14 @@ use Illuminate\View\View;
 
 class CheckoutController extends Controller
 {
-	public function index(Cart $cart): View|RedirectResponse
-	{
+    public function index(Cart $cart): View|RedirectResponse
+    {
         if ($cart->isEmpty()) {
             return redirect()->route('shop.cart.index')->with('error', 'Your cart is empty.');
         }
+
         return view('shop.checkout.index', compact('cart'));
-	}
+    }
 
     public function process(OrderRequest $request, Cart $cart, SubmitOrderHandler $handler): RedirectResponse
     {
@@ -24,6 +25,7 @@ class CheckoutController extends Controller
             return redirect()->route('shop.cart.index')->with('error', 'Your cart is empty.');
         }
         $handler->handle($request->validated(), $cart);
+
         return redirect()->route('shop.checkout.thankyou');
     }
 

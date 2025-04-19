@@ -12,6 +12,7 @@ class OrderController extends Controller
     public function index(): View
     {
         $orders = Order::with('items')->latest()->paginate();
+
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -23,6 +24,7 @@ class OrderController extends Controller
     public function destroy(Order $order): RedirectResponse
     {
         $order->delete();
+
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully.');
     }
 }

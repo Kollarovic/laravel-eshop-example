@@ -13,6 +13,7 @@ class PageController extends Controller
     public function index(): View
     {
         $pages = Page::latest()->paginate();
+
         return view('admin.pages.index', compact('pages'));
     }
 
@@ -25,6 +26,7 @@ class PageController extends Controller
     {
         $data = $request->validated();
         Page::create($data);
+
         return redirect()->route('admin.pages.index')->with('success', 'Page created successfully.');
     }
 
@@ -37,12 +39,14 @@ class PageController extends Controller
     {
         $data = $request->validated();
         $page->update($data);
+
         return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully.');
     }
 
     public function destroy(Page $page): RedirectResponse
     {
         $page->delete();
+
         return redirect()->route('admin.pages.index')->with('success', 'Page deleted successfully.');
     }
 }

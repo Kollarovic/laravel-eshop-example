@@ -1,17 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Shop\CartController;
-use App\Http\Controllers\Shop\HomeController;
 use App\Http\Controllers\Shop\CheckoutController;
-use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Shop\HomeController;
+use Illuminate\Support\Facades\Route;
 
 Route::name('shop.')->group(function () {
     Route::get('', [HomeController::class, 'index'])->name('home.index');

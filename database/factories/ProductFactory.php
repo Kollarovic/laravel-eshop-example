@@ -34,12 +34,13 @@ class ProductFactory extends Factory
     private function generateAndStoreImage(): ?string
     {
         $directory = 'products';
-        $fileName = Str::uuid() . '.jpg';
+        $fileName = Str::uuid().'.jpg';
         $imageUrl = "https://picsum.photos/seed/{$fileName}/640/480";
 
         try {
             $imageContent = file_get_contents($imageUrl);
             Storage::disk('public')->put("{$directory}/{$fileName}", $imageContent);
+
             return "{$directory}/{$fileName}";
         } catch (\Exception $e) {
             return null;

@@ -19,5 +19,4 @@ class PageRequest extends FormRequest
     {
         return true;
     }
-
 }

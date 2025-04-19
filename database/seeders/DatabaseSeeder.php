@@ -42,9 +42,9 @@ class DatabaseSeeder extends Seeder
                 foreach ($products->random(rand(2, 4)) as $product) {
                     $order->items()->create([
                         'product_id' => $product->id,
-                        'name'       => $product->name,
-                        'price'      => $product->price,
-                        'quantity'   => rand(1, 3),
+                        'name' => $product->name,
+                        'price' => $product->price,
+                        'quantity' => rand(1, 3),
                     ]);
                 }
             });

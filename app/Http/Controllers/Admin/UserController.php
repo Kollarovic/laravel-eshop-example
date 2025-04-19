@@ -15,6 +15,7 @@ class UserController extends Controller
     public function index(): View
     {
         $users = User::latest()->paginate();
+
         return view('admin.users.index', compact('users'));
     }
 
@@ -27,6 +28,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         User::create($data);
+
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
 
@@ -42,6 +44,7 @@ class UserController extends Controller
             unset($data['password']);
         }
         $user->update($data);
+
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
     }
 
@@ -51,6 +54,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('error', 'You cannot delete yourself.');
         }
         $user->delete();
+
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 }

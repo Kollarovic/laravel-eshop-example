@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\Category;
-use App\Models\Product;
-use App\Models\Page;
-use App\Models\User;
 use App\Models\Order;
+use App\Models\Page;
+use App\Models\Product;
+use App\Models\User;
 
 return [
     'label' => 'Dashboard',
@@ -24,7 +24,7 @@ return [
             'items' => [
                 'show' => [
                     'label' => 'Show order',
-                    'route' => "admin.orders.show",
+                    'route' => 'admin.orders.show',
                     'icon' => 'fas fa-eye',
                     'active' => false,
                 ],
@@ -39,13 +39,13 @@ return [
             'items' => [
                 'create' => [
                     'label' => 'Create category',
-                    'route' => "admin.categories.create",
+                    'route' => 'admin.categories.create',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
                 'update' => [
                     'label' => 'Edit category',
-                    'route' => "admin.categories.edit",
+                    'route' => 'admin.categories.edit',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
@@ -58,17 +58,17 @@ return [
             'value' => [Product::class, 'count'],
             'items' => [
                 'create' => ['label' => 'Create page',
-                    'route' => "admin.products.create",
+                    'route' => 'admin.products.create',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
                 'update' => [
                     'label' => 'Edit page',
-                    'route' => "admin.products.edit",
+                    'route' => 'admin.products.edit',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
-            ]
+            ],
         ],
         'pages' => [
             'label' => 'Pages',
@@ -77,17 +77,17 @@ return [
             'value' => [Page::class, 'count'],
             'items' => [
                 'create' => ['label' => 'Create page',
-                    'route' => "admin.pages.create",
+                    'route' => 'admin.pages.create',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
                 'update' => [
                     'label' => 'Edit page',
-                    'route' => "admin.pages.edit",
+                    'route' => 'admin.pages.edit',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
-            ]
+            ],
         ],
         'users' => [
             'label' => 'Users',
@@ -96,17 +96,17 @@ return [
             'value' => [User::class, 'count'],
             'items' => [
                 'create' => ['label' => 'Create user',
-                    'route' => "admin.users.create",
+                    'route' => 'admin.users.create',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
                 'update' => [
                     'label' => 'Edit user',
-                    'route' => "admin.users.edit",
+                    'route' => 'admin.users.edit',
                     'icon' => 'fas fa-pencil-alt',
                     'active' => false,
                 ],
-            ]
+            ],
         ],
         'profile' => [
             'label' => 'Profile',

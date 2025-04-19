@@ -25,6 +25,7 @@ class ProductRequest extends FormRequest
         if ($this->hasFile('image')) {
             $data['image'] = $this->file('image')->store('products', 'public');
         }
+
         return $data;
     }
 

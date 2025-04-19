@@ -13,6 +13,7 @@ class ProductController extends Controller
     public function index(): View
     {
         $products = Product::with('category')->latest()->paginate();
+
         return view('admin.products.index', compact('products'));
     }
 
@@ -25,6 +26,7 @@ class ProductController extends Controller
     {
         $data = $request->payload();
         Product::create($data);
+
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
     }
 
@@ -37,12 +39,14 @@ class ProductController extends Controller
     {
         $data = $request->payload();
         $product->update($data);
+
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
 
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
+
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
     }
 }

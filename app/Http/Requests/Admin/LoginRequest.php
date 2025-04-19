@@ -20,7 +20,7 @@ class LoginRequest extends FormRequest
     {
         $credentials = $this->validated();
 
-        if (!Auth::attempt($credentials, $this->boolean('remember'))) {
+        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);

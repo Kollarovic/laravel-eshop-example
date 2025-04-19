@@ -15,9 +15,7 @@ class ItemsFactory
         'items' => [],
     ];
 
-    public function __construct(private readonly Request $request)
-    {
-    }
+    public function __construct(private readonly Request $request) {}
 
     public function create(array $data): Item
     {
@@ -31,6 +29,7 @@ class ItemsFactory
             $data['current']
         );
         $this->addItems($rootItem, $data['items']);
+
         return $rootItem;
     }
 
@@ -55,6 +54,7 @@ class ItemsFactory
     {
         $data += self::DEFAULT;
         $data['current'] = $this->request->routeIs($data['route']);
+
         return $data;
     }
 }

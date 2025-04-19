@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index(): View
     {
         $products = Product::active()->inRandomOrder()->take(6)->get();
+
         return view('shop.home.index', compact('products'));
     }
 }

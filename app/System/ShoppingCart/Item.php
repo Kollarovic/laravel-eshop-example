@@ -9,8 +9,7 @@ class Item
         private string $name,
         private float $price,
         private int $quantity
-    ) {
-    }
+    ) {}
 
     public function getId(): int
     {
@@ -35,12 +34,14 @@ class Item
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
     public function addQuantity(int $quantity): self
     {
         $this->quantity += $quantity;
+
         return $this;
     }
 

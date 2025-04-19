@@ -14,8 +14,7 @@ class Item
         private readonly mixed $value,
         private readonly bool $active,
         private readonly bool $current
-    ) {
-    }
+    ) {}
 
     public function addItem(
         string $name,
@@ -27,6 +26,7 @@ class Item
         bool $current
     ): self {
         $item = new self($label, $route, $icon, $value, $active, $current);
+
         return $this->items[$name] = $item;
     }
 
@@ -50,6 +50,7 @@ class Item
         if (is_callable($this->value)) {
             return ($this->value)();
         }
+
         return $this->value;
     }
 
@@ -63,7 +64,7 @@ class Item
         return $this->current;
     }
 
-     /* @return array<Item> */
+    /* @return array<Item> */
     public function getItems(bool $deep = false): array
     {
         $items = array_values($this->items);
@@ -72,6 +73,7 @@ class Item
                 $items = array_merge($items, $item->getItems(true));
             }
         }
+
         return $items;
     }
 
@@ -85,6 +87,7 @@ class Item
                 return true;
             }
         }
+
         return false;
     }
 
@@ -100,6 +103,7 @@ class Item
         if ($items) {
             $items = [$this->getRoute() => $this] + $items;
         }
+
         return $items;
     }
 
@@ -113,6 +117,7 @@ class Item
                 return $item;
             }
         }
+
         return null;
     }
 }
