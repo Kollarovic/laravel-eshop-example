@@ -19,4 +19,11 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    protected function casts(): array
+    {
+        return [
+            'active' => 'boolean',
+        ];
+    }
 }
