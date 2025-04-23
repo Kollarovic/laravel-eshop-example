@@ -11,36 +11,38 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function index(Cart $cart): View
+    public function __construct(private readonly Cart $cart) {}
+
+    public function index(): View
     {
-        return view('shop.cart.index', compact('cart'));
+        return view('shop.cart.index', ['cart' => $this->cart]);
     }
 
-    public function add(Product $product, Cart $cart): RedirectResponse
+    public function add(Product $product): RedirectResponse
     {
-        $cart->addItem($product, 1);
+        $this->cart->addItem($product, 1);
 
         return redirect()->route('shop.cart.index')->with('success', 'Product added to cart successfully!');
     }
 
-    public function remove(Product $product, Cart $cart): RedirectResponse
+    public function remove(Product $product): RedirectResponse
     {
-        $cart->removeItem($product);
+        $this->cart->removeItem($product);
 
         return redirect()->route('shop.cart.index')->with('success', 'Product removed from cart successfully!');
     }
 
-    public function update(CartRequest $request, Product $product, Cart $cart): RedirectResponse
+    public function update(CartRequest $request, Product $product): RedirectResponse
     {
         $validated = $request->validated();
-        $cart->updateItem($product, $validated['quantity']);
+        $this->cart->updateItem($product, $validated['quantity']);
 
         return redirect()->route('shop.cart.index')->with('success', 'Cart updated successfully!');
     }
 
-    public function clear(Cart $cart): RedirectResponse
+    public function clear(): RedirectResponse
     {
-        $cart->clear();
+        $this->cart->clear();
 
         return redirect()->route('shop.cart.index')->with('success', 'Cart cleared.');
     }
