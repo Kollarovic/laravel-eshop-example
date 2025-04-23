@@ -11,7 +11,7 @@ class Cart
     /* @return array<Item> */
     public function getItems(): array
     {
-        return $this->storage->getCartItems();
+        return $this->storage->loadCartItems();
     }
 
     public function addItem(Product $product, int $quantity = 1): void

@@ -10,7 +10,7 @@ class SessionCartStorage implements CartStorage
 
     public function __construct(protected Store $session) {}
 
-    public function getCartItems(): array
+    public function loadCartItems(): array
     {
         return $this->session->get(self::KEY, []);
     }
